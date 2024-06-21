@@ -88,4 +88,20 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'p') {
+        rightPaddle.dy = -paddleSpeed;
+    }
+    else if (event.key === 'l') {
+        rightPaddle.dy = paddleSpeed;
+    }
+});
+document.addEventListener('keyup', (event) => {
+    if (event.key === 'p') {
+        rightPaddle.dy = 0;
+    } else if (event.key === 'l') {
+        rightPaddle.dy = 0;
+    }
+})
+
 requestAnimationFrame(loop);
