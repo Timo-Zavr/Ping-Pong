@@ -61,12 +61,23 @@ function movePaddles() {
     rightPaddle.y += rightPaddle.dy;
 }
 
+function renderBall() {
+    canvas.fillRect(ball.x, ball.y, ball.width, ball.height);
+}
+
+function moveBall() {
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+}
+
 function loop() {
     clearMap();
 
     renderLeftPaddle()
     renderRightPaddle()
     movePaddles()
+    renderBall()
+    moveBall()
 
     renderMap();
     requestAnimationFrame(loop);
@@ -81,9 +92,7 @@ document.addEventListener('keydown', (event) => {
     }
 });
 document.addEventListener('keyup', (event) => {
-    if (event.key === 'w' || event.key === 'ц') {
-        leftPaddle.dy = 0;
-    } else if (event.key === 's' || event.key === 'ы') {
+    if (event.key === 'w' || event.key === 'ц' || event.key === 's' || event.key === 'ы') {
         leftPaddle.dy = 0;
     }
 })
