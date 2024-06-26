@@ -211,6 +211,8 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
+let Fullscreen = false
+
 document.addEventListener('keydown', (event) => {
     if (event.key === 'f' || event.key === 'а' && Fullscreen === false) {
         Fullscreen == true
