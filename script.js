@@ -180,7 +180,6 @@ function loop() {
     renderMap();
     requestAnimationFrame(loop);
 }
-let Fullscreen = false
 
 document.addEventListener('keydown', (event) => {
     if (event.key === 'w' || event.key === 'ц') {
@@ -214,16 +213,16 @@ document.addEventListener('keyup', (event) => {
 
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'f' || event.key === 'а' && Fullscreen === false) {
-        Fullscreen == true
-        document.documentElement.requestFullscreen()
+    if (event.key === 'f' || event.key === 'а') {
+        fs()
     }
 })
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'f' || event.key === 'а' && Fullscreen === true) {
-        Fullscreen == false
+function fs(){
+    if (!document.fullscreenElement){
+        document.documentElement.requestFullscreen()
+    } else if (document.exitFullscreen){
         document.exitFullscreen()
     }
-})
+}
 
 requestAnimationFrame(loop);
