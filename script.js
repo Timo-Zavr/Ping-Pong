@@ -211,4 +211,17 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'f' || event.key === 'а' && Fullscreen === false) {
+        Fullscreen == true
+        document.documentElement.requestFullscreen()
+    }
+})
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'f' || event.key === 'а' && Fullscreen === true) {
+        Fullscreen == false
+        document.exitFullscreen()
+    }
+})
+
 requestAnimationFrame(loop);
