@@ -33,6 +33,7 @@ const ball = {
     height: grid,
     dx: ballSpeed,
     dy: -ballSpeed,
+    collor: 'rgb( 120, 0, 0)',
     isResetted: false,
 }
 
@@ -45,7 +46,7 @@ function renderMap() {
     canvas.fillRect(0, 0, map.width, grid); // Верхняя граница
     canvas.fillRect(0, map.height - grid, map.width, grid) // Нижняя граница
 
-    for (let i = grid - 5; i < map.height - grid; i += grid * 2) {
+    for (let i = grid - 7; i < map.height - grid; i += grid * 2) {
         canvas.fillRect(map.width / 2, i, grid, grid); // Разделительная линия
     }
 }
