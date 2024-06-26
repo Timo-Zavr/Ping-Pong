@@ -2,6 +2,7 @@ const map = document.querySelector("#game");
 const canvas = map.getContext('2d');
 canvas.fillStyle = 'rgb( 0, 128, 0)';
 
+
 const grid = 15;
 const paddleHeight = grid * 5;
 const maxPaddleY = map.height - grid - paddleHeight;
@@ -34,6 +35,11 @@ const ball = {
     dy: -ballSpeed,
     isResetted: false,
 }
+
+const leftN = document.querySelector("#leftCounter")
+const rightN = document.querySelector("#rightCounter")
+let lNum = parseInt(leftN.textContent)
+let rNum = parseInt(rightN.textContent)
 
 function renderMap() {
     canvas.fillRect(0, 0, map.width, grid); // Верхняя граница
@@ -72,6 +78,15 @@ function moveBall() {
 
 function resetGame() {
     if ((ball.x < 0 || ball.x > map.width) && !ball.isResetted) {
+
+        if (ball.x < 0) {
+            lNum = 0
+            leftCounter.textContent = lNum
+        } else if (ball.x > map.width){
+            rNum = 0
+            rightCounter.textContent = rNum
+        }
+
         ball.isResetted = true;
         setTimeout(() => {
             ball.x = map.width / 2;
@@ -100,8 +115,8 @@ function collideWallsWithBall() {
         ball.y = grid;
         ball.dy = -ball.dy;
     }
-    else if (ball.y > map.height - grid) {
-        ball.y = map.height - grid;
+    else if (ball.y > map.height - grid*2) {
+        ball.y = map.height - grid*2;
         ball.dy = -ball.dy;
     }
 }
@@ -121,10 +136,14 @@ function collidePaddlesWithBall() {
     if (isCollides(ball, rightPaddle)) {
         ball.dx = -ball.dx;
         ball.x = rightPaddle.x - ball.width;
+        rNum++
+        rightCounter.textContent = rNum
     }
     else if (isCollides(ball, leftPaddle)) {
         ball.dx = -ball.dx;
         ball.x = leftPaddle.x + leftPaddle.width;
+        lNum++
+        leftCounter.textContent = lNum
     }
 }
 

@@ -5,11 +5,21 @@ body {
     margin: 0;
 }
 
+.table {
+    color: white;
+    display: flex;
+    z-index: 1;
+}
+
+.table__counter {
+    font-size: 40px;
+}
+
 body {
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    z-index: 0;
 }
-
